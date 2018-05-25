@@ -42,19 +42,19 @@ architecture SimpleCircuit of LogicalStep_Lab2_top is
 	component MUX port(                                         -- takes in 2, 8-bit signals, and one button input, and outputs one of the signals determined by button input
 
 			input		: in std_logic_vector(7 downto 0);      -- 8-bit input signal
-			sum		: in std_logic_vector(7 downto 0);          -- 8-bit input signal
+			sum			: in std_logic_vector(7 downto 0);      -- 8-bit input signal
 			selector	: in std_logic;                         -- button input
-			output	: out std_logic_vector(7 downto 0)          -- 8-bit output signal
+			output		: out std_logic_vector(7 downto 0)      -- 8-bit output signal
 	);
 	end component;
 	
 	component LogicProcessor port(                              -- takes 2, 4-bit inputs, and a 3-bit input. the 3-bit input determines which operation will be performed on the
 	                                                            -- 4-bit inputs, one of AND, OR, or XOR, and outputs the result
 
-			input1	: in std_logic_vector(3 downto 0);          -- 4-bit input
-			input2	: in std_logic_vector(3 downto 0);          -- 4-bit input
-			operator	: in std_logic_vector(2 downto 0);      -- 3-bit input
-			output	: out std_logic_vector(3 downto 0)          -- 4-bit output
+			input1		: in std_logic_vector(3 downto 0);		-- 4-bit input
+			input2		: in std_logic_vector(3 downto 0);		-- 4-bit input
+			operator	: in std_logic_vector(2 downto 0);		-- 3-bit input
+			output		: out std_logic_vector(3 downto 0)		-- 4-bit output
 	);
 	end component;
 	
@@ -75,7 +75,7 @@ architecture SimpleCircuit of LogicalStep_Lab2_top is
 	signal seg7_B		: std_logic_vector(6 downto 0);
 	signal hex_A		: std_logic_vector(3 downto 0);
 	signal hex_B		: std_logic_vector(3 downto 0);
-	signal OPERATOR	: std_logic_vector(3 downto 0);
+	signal OPERATOR		: std_logic_vector(3 downto 0);
 	signal firstpart	: std_logic_vector(3 downto 0);
 	signal secondpart	: std_logic_vector(3 downto 0);
 	signal hex_AB		: std_logic_vector(7 downto 0);

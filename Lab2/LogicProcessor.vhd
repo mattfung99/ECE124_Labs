@@ -3,10 +3,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity LogicProcessor is port (
-	input1	: in std_logic_vector(3 downto 0);			-- 4-bit input from one operand
-	input2	: in std_logic_vector(3 downto 0);			-- 4-bit input from other operand
-	operator	: in std_logic_vector(2 downto 0);		-- inputs from push buttons 0-2
-	output	: out std_logic_vector(3 downto 0)			-- 4-bit output
+	input1		: in std_logic_vector(3 downto 0);			-- 4-bit input from one operand
+	input2		: in std_logic_vector(3 downto 0);			-- 4-bit input from other operand
+	operator	: in std_logic_vector(2 downto 0);			-- inputs from push buttons 0-2
+	output		: out std_logic_vector(3 downto 0)			-- 4-bit output
 );
 end LogicProcessor;
 
