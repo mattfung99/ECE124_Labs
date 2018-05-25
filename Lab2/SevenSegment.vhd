@@ -20,7 +20,9 @@ architecture Structural of SevenSegment is
 -- 
 -- The following statements convert a 4-bit input, called dataIn to a pattern of 7 bits
 -- The segment turns on when it is '1' otherwise '0'
---
+-- We had to make changes to the following statements as bugs were inserted into some of the statements 
+-- To test the following statements, we simulated the code to get a waveform graph where we compared it to the correct one given in the manual
+
 begin
    with hex select						     --GFEDCBA        3210      -- data in   
 	sevenseg 				    			   <= "0111111" when "0000",    -- [0]
