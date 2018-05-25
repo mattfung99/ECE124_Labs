@@ -5,9 +5,9 @@ use ieee.numeric_std.all;
 --define inputs and outputs
 entity MUX is port (
 	input		: in std_logic_vector(7 downto 0);
-	sum		: in std_logic_vector(7 downto 0);
+	sum			: in std_logic_vector(7 downto 0);
 	selector	: in std_logic_vector(0 downto 0);
-	output	: out std_logic_vector(7 downto 0)
+	output		: out std_logic_vector(7 downto 0)
 );
 end MUX;
 
