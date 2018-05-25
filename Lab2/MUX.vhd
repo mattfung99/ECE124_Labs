@@ -4,10 +4,10 @@ use ieee.numeric_std.all;
 
 --define inputs and outputs
 entity MUX is port (
-	input		: in std_logic_vector(7 downto 0);
-	sum			: in std_logic_vector(7 downto 0);
-	selector	: in std_logic_vector(0 downto 0);
-	output		: out std_logic_vector(7 downto 0)
+	input		: in std_logic_vector(7 downto 0);		-- 8 bit input from operands 
+	sum			: in std_logic_vector(7 downto 0);		-- 8 bit input for arithmetic sum 
+	selector	: in std_logic_vector(0 downto 0);		-- 1 bit selector that allows different inputs to pass through based on buttons clicked
+	output		: out std_logic_vector(7 downto 0)		-- 8 bit output 
 );
 end MUX;
 
@@ -15,6 +15,6 @@ architecture Structural of MUX is
 
 begin
 	with selector select
-	output							<= input when "1",
-											sum when "0";
+	output							<= input when "1",			-- Output becomes an input when the received value from output is 1
+											sum when "0";		-- The output will be summed when the received value from output is 0
 end architecture Structural;
