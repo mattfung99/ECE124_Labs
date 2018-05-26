@@ -4,14 +4,14 @@ use ieee.numeric_std.all;
 
 
 entity LogicalStep_Lab2_top is port (
-   clkin_50			: in	std_logic;
+
+   	clkin_50		: in	std_logic;
 	pb				: in	std_logic_vector(3 downto 0);
  	sw   			: in  std_logic_vector(7 downto 0); 		-- The switch inputs
-   leds				: out std_logic_vector(7 downto 0); 		-- for displaying the switch content
-   seg7_data 		: out std_logic_vector(6 downto 0); 		-- 7-bit outputs to a 7-segment
+   	leds			: out std_logic_vector(7 downto 0); 		-- for displaying the switch content
+   	seg7_data 		: out std_logic_vector(6 downto 0); 		-- 7-bit outputs to a 7-segment
 	seg7_char1  	: out	std_logic;				    		-- seg7 digit1 selector
 	seg7_char2  	: out	std_logic				    		-- seg7 digit2 selector
-	
 ); 
 end LogicalStep_Lab2_top;
 
@@ -21,50 +21,50 @@ architecture SimpleCircuit of LogicalStep_Lab2_top is
 -- Components Used ---
 ------------------------------------------------------------------- 
 
-  component SevenSegment port (                  				-- with a 4-bit input, will output 7 bits specifying which segments to light up
+component SevenSegment port (								-- with a 4-bit input, will output 7 bits specifying which segments to light up
   
-   hex   		:  in  std_logic_vector(3 downto 0);   			-- The 4 bit data to be displayed
-   sevenseg 	:  out std_logic_vector(6 downto 0)    			-- 7-bit outputs to a 7-segment
-   ); 
-   end component;
+	hex   		:  in  std_logic_vector(3 downto 0);		-- The 4 bit data to be displayed
+	sevenseg 	:  out std_logic_vector(6 downto 0)			-- 7-bit outputs to a 7-segment
+); 
+end component;
 	
-	component segment7_mux port(                                -- 7 segment hex decoder
-	                                                            -- takes in 2, 7-bit values to map onto the 2 hex displays
-			clk			: in std_logic := '0';					
-			DIN2		: in std_logic_vector(6 downto 0);		-- input for one digit
-			DIN1		: in std_logic_vector(6 downto 0);		-- input for other digit
-			DOUT		: out std_logic_vector(6 downto 0); 	-- output to hex displays
-			DIG2		: out std_logic;
-			DIG1		: out std_logic
-	);
-	end component;
-	
-	component MUX port(                                         -- takes in 2, 8-bit signals, and one button input, and outputs one of the signals determined by button input
+component segment7_mux port(								-- 7 segment hex decoder
+															-- takes in 2, 7-bit values to map onto the 2 hex displays
+		clk			: in std_logic := '0';					
+		DIN2		: in std_logic_vector(6 downto 0);		-- input for one digit
+		DIN1		: in std_logic_vector(6 downto 0);		-- input for other digit
+		DOUT		: out std_logic_vector(6 downto 0); 	-- output to hex displays
+		DIG2		: out std_logic;
+		DIG1		: out std_logic
+);
+end component;
 
-			input		: in std_logic_vector(7 downto 0);      -- 8-bit input signal
-			sum			: in std_logic_vector(7 downto 0);      -- 8-bit input signal
-			selector	: in std_logic;                         -- button input
-			output		: out std_logic_vector(7 downto 0)      -- 8-bit output signal
-	);
-	end component;
-	
-	component LogicProcessor port(                              -- takes 2, 4-bit inputs, and a 3-bit input. the 3-bit input determines which operation will be performed on the
-	                                                            -- 4-bit inputs, one of AND, OR, or XOR, and outputs the result
+component MUX port(                                         -- takes in 2, 8-bit signals, and one button input, and outputs one of the signals determined by button input
 
-			input1		: in std_logic_vector(3 downto 0);		-- 4-bit input
-			input2		: in std_logic_vector(3 downto 0);		-- 4-bit input
-			operator	: in std_logic_vector(2 downto 0);		-- 3-bit input
-			output		: out std_logic_vector(3 downto 0)		-- 4-bit output
-	);
-	end component;
-	
-	component FourBitAdder port(                                -- takes in 2, 4-bit inputs, and adds them together, and outputs them as an 8-bit signal
-			
-			input1	: in std_logic_vector(3 downto 0);          -- 4-bit input
-			input2	: in std_logic_vector(3 downto 0);          -- 4-bit input
-			sum		: out std_logic_vector(7 downto 0)          -- 8-bit sum output
-	);
-	end component;
+		input		: in std_logic_vector(7 downto 0);      -- 8-bit input signal
+		sum			: in std_logic_vector(7 downto 0);      -- 8-bit input signal
+		selector	: in std_logic;                         -- button input
+		output		: out std_logic_vector(7 downto 0)      -- 8-bit output signal
+);
+end component;
+
+component LogicProcessor port(                              -- takes 2, 4-bit inputs, and a 3-bit input. the 3-bit input determines which operation will be performed on the
+															-- 4-bit inputs, one of AND, OR, or XOR, and outputs the result
+
+		input1		: in std_logic_vector(3 downto 0);		-- 4-bit input
+		input2		: in std_logic_vector(3 downto 0);		-- 4-bit input
+		operator	: in std_logic_vector(2 downto 0);		-- 3-bit input
+		output		: out std_logic_vector(3 downto 0)		-- 4-bit output
+);
+end component;
+
+component FourBitAdder port(                                -- takes in 2, 4-bit inputs, and adds them together, and outputs them as an 8-bit signal
+		
+		input1	: in std_logic_vector(3 downto 0);          -- 4-bit input
+		input2	: in std_logic_vector(3 downto 0);          -- 4-bit input
+		sum		: out std_logic_vector(7 downto 0)          -- 8-bit sum output
+);
+end component;
 --------------------------------------------------------------------------------	
 	
 -- Create any signals, or temporary variables to be used

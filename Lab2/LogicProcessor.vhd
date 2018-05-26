@@ -13,13 +13,13 @@ end LogicProcessor;
 architecture Structural of LogicProcessor is
 
 begin
-		with operator select
-		output						<= "0000" when "111",						-- invalid state, turn off all LEDs
-											"0000" when "000",					-- invalid state, turn off all LEDs
-											"0000" when "001",					-- invalid state, turn off all LEDs
-											"0000" when "010",					-- invalid state, turn off all LEDs
-											"0000" when "100",					-- invalid state, turn off all LEDs
-											input1 AND input2 when "110",		-- output the AND of both inputs
-											input1 OR input2 when "101",		-- output the OR of both inputs
-											input1 XOR input2 when "011";		-- output the XOR of both inputs
+	with operator select
+	output							<=  "0000" when "111",					-- invalid state, turn off all LEDs
+										"0000" when "000",					-- invalid state, turn off all LEDs
+										"0000" when "001",					-- invalid state, turn off all LEDs
+										"0000" when "010",					-- invalid state, turn off all LEDs
+										"0000" when "100",					-- invalid state, turn off all LEDs
+										input1 AND input2 when "110",		-- output the AND of both inputs
+										input1 OR input2 when "101",		-- output the OR of both inputs
+										input1 XOR input2 when "011";		-- output the XOR of both inputs
 end architecture Structural;

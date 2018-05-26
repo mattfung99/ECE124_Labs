@@ -15,6 +15,6 @@ architecture Structural of MUX is
 
 begin
 	with selector select
-	output							<= input when "1",			-- Output becomes an input when the received value from output is 1
-											sum when "0";		-- The output will be summed when the received value from output is 0
+	output						<=  input when "1",		-- Output becomes an input when the received value from output is 1
+									sum when "0";		-- The output will be summed when the received value from output is 0
 end architecture Structural;
