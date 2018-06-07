@@ -7,9 +7,9 @@ entity LogicalStep_Lab2_top is port (
 
    	clkin_50		: in	std_logic;
 	pb				: in	std_logic_vector(3 downto 0);
- 	sw   			: in  std_logic_vector(7 downto 0); 		-- The switch inputs
-   	leds			: out std_logic_vector(7 downto 0); 		-- for displaying the switch content
-   	seg7_data 		: out std_logic_vector(6 downto 0); 		-- 7-bit outputs to a 7-segment
+ 	sw   			: in  	std_logic_vector(7 downto 0); 		-- The switch inputs
+   	leds			: out 	std_logic_vector(7 downto 0); 		-- for displaying the switch content
+   	seg7_data 		: out 	std_logic_vector(6 downto 0); 		-- 7-bit outputs to a 7-segment
 	seg7_char1  	: out	std_logic;				    		-- seg7 digit1 selector
 	seg7_char2  	: out	std_logic				    		-- seg7 digit2 selector
 ); 
@@ -82,7 +82,7 @@ end component;
 	signal outputLED	: std_logic_vector(7 downto 0);
 	signal sum			: std_logic_vector(7 downto 0);
 	signal output		: std_logic_vector(7 downto 0);
-	signal outputLP	: std_logic_vector(3 downto 0);
+	signal outputLP		: std_logic_vector(3 downto 0);
 	
 	
 -- Here the circuit begins
@@ -99,7 +99,7 @@ begin
 
 	firstpart <= output(7 downto 4);		-- stores the first four bits of the output signal
 	secondpart <= output(3 downto 0);		-- stores the last four bits of the output signal
-	hex_AB <= hex_A & hex_B;				-- stores the concatenation of hex_A, and hex_B
+	hex_AB <= hex_B & hex_A;				-- stores the concatenation of hex_B, and hex_A
 	leds(0) <= outputLED(0);				-- outputs state of outputLED(0) to LED(0)
 	leds(1) <= outputLED(1);				-- outputs state of outputLED(1) to LED(1)
 	leds(2) <= outputLED(2);				-- outputs state of outputLED(2) to LED(2)
