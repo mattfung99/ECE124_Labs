@@ -100,10 +100,7 @@ begin
 	firstpart <= output(7 downto 4);		-- stores the first four bits of the output signal
 	secondpart <= output(3 downto 0);		-- stores the last four bits of the output signal
 	hex_AB <= hex_B & hex_A;				-- stores the concatenation of hex_B, and hex_A
-	leds(0) <= outputLED(0);				-- outputs state of outputLED(0) to LED(0)
-	leds(1) <= outputLED(1);				-- outputs state of outputLED(1) to LED(1)
-	leds(2) <= outputLED(2);				-- outputs state of outputLED(2) to LED(2)
-	leds(3) <= outputLED(3);				-- outputs state of outputLED(3) to LED(3)
+	leds(3 downto 0) <= outputLED(3 downto 0);				-- outputs state of outputLED 3, 2, 1, 0 to leds 3, 2, 1, 0
 
 	INST1: SevenSegment port map(firstpart, seg7_A);											-- maps first four bits of output signal to seven segment decoder
 	INST2: SevenSegment port map(secondpart, seg7_B);											-- maps last four bits of output signal to seven segment decoder
