@@ -55,11 +55,19 @@ end component;
 -- Create any signals, or temporary variables to be used
 	signal A		: std_logic_vector(3 downto 0);				-- four bit input A
 	signal B		: std_logic_vector(3 downto 0);				-- four bit input B
-	signal DoorsWindowsOpen	: std_logic_vector(2 downto 0);				-- stores which of door/windows are open(1) or closed(0)
+
+	signal DoorsWindowsOpen	: std_logic_vector(2 downto 0);				
+	-- stores which of door/windows are open(1) or closed(0)
+	
 	signal Furnace_On		: std_logic;					-- if 1, then furnace on
 	signal AC_ON		: std_logic;						-- if 1, then AC on
-	signal CurrentTemperature		: std_logic_vector(6 downto 0);		-- 7 bit representation of current temperature, to go to seven segment display
-	signal DesiredTemperature		: std_logic_vector(6 downto 0);		-- 7 bit representation of desired temperature, to go to seven segment display
+
+	signal CurrentTemperature		: std_logic_vector(6 downto 0);
+	-- 7 bit representation of current temperature, to go to seven segment display
+	
+	signal DesiredTemperature		: std_logic_vector(6 downto 0);
+	-- 7 bit representation of desired temperature, to go to seven segment display
+
 	signal AGTB	: std_logic;							-- contains result of A > B (1 true, 0 false)
 	signal ALTB	: std_logic;							-- contains result of A < B (1 true, 0 false)
 	signal AEQB	: std_logic;							-- contains result of A = B (1 true, 0 false)
