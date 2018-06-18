@@ -73,8 +73,8 @@ end component;
 -- Here the circuit begins
 
 begin
-	A <= sw(3 downto 0);						-- A takes input from switches 3-0
-	B <= sw(7 downto 4);						-- B takes input from switches 7-4
+	A <= sw(3 downto 0);						-- A takes current temperature from switches 3-0
+	B <= sw(7 downto 4);						-- B takes desired temperature from switches 7-4
 	DoorsWindowsOpen <= NOT pb(2 downto 0);				-- status of doors and windows taken from push buttons 2-0
 	leds(6 downto 4) <= DoorsWindowsOpen(2 downto 0);		-- status of doors and windows output to leds 6-4
 	leds(0) <= Furnace_On;						-- output status of furnace (1 on, 0 off) to led 0
