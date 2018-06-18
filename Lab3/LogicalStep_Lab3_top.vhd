@@ -80,7 +80,8 @@ begin
 	leds(0) <= Furnace_On;						-- output status of furnace (1 on, 0 off) to led 0
 	leds(1) <= AEQB;						-- if current temperature equals desired temperature, turn on led 1
 	leds(2) <= AC_ON;						-- output status of AC (1 on, 0 off) to led 2
-	leds(3) <= Furnace_On OR AC_ON;					-- output status of fan (1 on, 0 off) to led 3, fan is on if either furnace or AC is on
+	leds(3) <= Furnace_On OR AC_ON;					-- output status of fan (1 on, 0 off) to led 3, fan is on if
+									-- either furnace or AC is on
 
 	Furnace_On <= (ALTB AND (NOT DoorsWindowsOpen(0)) AND (NOT DoorsWindowsOpen(1)) AND (NOT DoorsWindowsOpen(2)));
 	-- determines when to turn furnace on
