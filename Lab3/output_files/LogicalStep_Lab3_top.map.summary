@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Analysis & Synthesis Status : Successful - Thu Jun 07 16:33:15 2018
 Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 Revision Name : LogicalStep_Lab3_top
@@ -14,3 +15,21 @@ Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
 UFM blocks : 0
 ADC blocks : 0
+=======
+Analysis & Synthesis Status : Successful - Thu Jun 07 16:33:15 2018
+Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+Revision Name : LogicalStep_Lab3_top
+Top-level Entity Name : LogicalStep_Lab3_top
+Family : MAX 10
+Total logic elements : 44
+    Total combinational functions : 44
+    Dedicated logic registers : 11
+Total registers : 11
+Total pins : 30
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0
+>>>>>>> cfef051bb3bf4a0568bc19b66a91f7a9f79c087f
