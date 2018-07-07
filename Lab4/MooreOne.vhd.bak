@@ -1,0 +1,146 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+Entity MooreOne IS Port
+(
+		clk_in, extendToggle, extendEnable						: in std_logic;
+		position															: in std_logic_vector(7 downto 4);
+		grappleEnable, shiftClk_en, direction, extendOut	: out std_logic;
+ );
+END ENTITY;
+ 
+
+ Architecture MooreOne of MooreOne is
+ 
+Type state is (s0, s1, s2, s3, s4);
+		-- s0 incorrect position, can't extend
+		-- s1 correct position, not extended
+		-- s2 correct position, extending
+		-- s3 max extension
+		-- s4 retracting
+		
+ 
+ signal currentState			: state;
+ signal nextState				: state;
+ 
+
+  BEGIN
+ 
+ --------------------------------------------------------------------------------
+ --State Machine:
+ --------------------------------------------------------------------------------
+
+ -- REGISTER_LOGIC PROCESS:
+ 
+Register_Section: PROCESS (clk_in, nextState)  -- this process synchronizes the activity to a clock
+BEGIN
+	IF(rising_edge(clk_in)) THEN
+		currentState <= nextState;
+	END IF;
+END PROCESS;	
+
+
+
+-- TRANSITION LOGIC PROCESS
+
+Transition_Section: PROCESS (I0, I1, I2, current_state) 
+
+BEGIN
+     CASE current_state IS
+         WHEN S0 =>		
+				IF(I0='1') THEN
+					next_state <= S1;
+				ELSE
+					next_state <= S0;
+				END IF;
+
+         WHEN S1 =>		
+					next_state <= S2;
+
+         WHEN S2 =>		
+				IF(I0='1') THEN
+					next_state <= S6;
+				ELSIF(I1='1') THEN
+					next_state <= S3;
+				ELSE
+					next_state <= S2;
+				END IF;
+				
+         WHEN S3 =>		
+				IF(I0='1') THEN
+					next_state <= S4;
+				ELSE
+					next_state <= S3;
+				END IF;
+
+         WHEN S4 =>		
+					next_state <= S5;
+
+         WHEN S5 =>		
+					next_state <= S6;
+				
+         WHEN S6 =>		
+				IF(I0='1') THEN
+					next_state <= S7;
+				ELSE
+					next_state <= S6;
+				END IF;
+				
+         WHEN S7 =>		
+				IF(I2='1') THEN
+					next_state <= S0;
+				ELSE
+					next_state <= S7;
+				END IF;
+
+				WHEN OTHERS =>
+               next_state <= S0;
+ 		END CASE;
+ END PROCESS;
+
+-- DECODER SECTION PROCESS
+
+Decoder_Section: PROCESS (I0, I1, I2, current_state) 
+
+BEGIN
+     CASE current_state IS
+         WHEN S0 =>		
+			output1 <= '1';
+			output2 <= '0';
+			
+         WHEN S1 =>		
+			output1 <= '0';
+			output2 <= '0';
+
+         WHEN S2 =>		
+			output1 <= '0';
+			output2 <= '0';
+			
+         WHEN S3 =>		
+			output1 <= '0';
+			output2 <= '0';
+
+         WHEN S4 =>		
+			output1 <= '0';
+			output2 <= '0';
+
+         WHEN S5 =>		
+			output1 <= '0';
+			output2 <= '0';
+				
+         WHEN S6 =>		
+			output1 <= '0';
+			output2 <= '1';
+				
+         WHEN S7 =>		
+			output1 <= '0';
+			output2 <= '0';
+				
+         WHEN others =>		
+ 			output1 <= '0';
+			output2 <= '0';
+	  END CASE;
+ END PROCESS;
+
+ END ARCHITECTURE SM;
