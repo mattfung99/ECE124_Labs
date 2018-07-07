@@ -175,14 +175,14 @@ MooreState2: MooreTwo port map(Main_Clk, pb(0), grapple, leds(3));													-
 BinCLK: PROCESS(clkin_50, rst_n) is
    BEGIN
 		IF (rising_edge(clkin_50)) THEN -- binary counter increments on rising clock edge
-         bin_counter <= bin_counter + 1;
-      END IF;
+        	bin_counter <= bin_counter + 1;
+		END IF;
    END PROCESS;
 
 Clock_Source:
 				Main_Clk <= 
 				clkin_50 when sim = TRUE else				-- for simulations only
-				std_logic(bin_counter(23));								-- for real FPGA operation
+				std_logic(bin_counter(23));					-- for real FPGA operation
 					
 ---------------------------------------------------------------------------------------------------
 
