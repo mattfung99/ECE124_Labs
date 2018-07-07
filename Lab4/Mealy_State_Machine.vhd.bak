@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Mealy_State_Machine is port (
+		clk, x-motion, y-motion, extender_out, xgt, xlt, xeq, ygt, ylt, yeq		: in std_logic;
+		xclk_en, yclk_en, xupdown, yupdown, error, extender_enable			: out std_logic
+);
+end entity;
+
+architecture Mealy of Mealy_State_Machine is
+
+TYPE XStatus is (s0, s1);
+				-- s0: x-enabled
+				-- s1: x-disabled
+TYPE YStatus is (s2, s3);
+				-- s2: y-enabled
+				-- s3: y-disabled
+
+SIGNAL currentXState, nextXState		: XStatus;
+SIGNAL currentYState, nextYState		: Ystatus;
+
+begin
+
+
+Register_Section: process(clk, nextXState, nextYState)
+begin
+		if(rising_edge(clk)) then
+				currentXState = nextXState;
+				currentYState = nextYState;
+		end if;
+end process;
+
+
+Transition_Section: process(x-motion, y-motion)
+begin
+		if(x-motion = '1') then
+				nextXState = s0;
+		end if;
+		if(y-motion = '1') then
+				nextYState = s2;
+		end if;
+		if(xeq = '1') then
+				nextXState = s1;
+		end if;
+		if(yeq = '1') then
+				nextYState = s3;
+		end if;
+		
+end process;
+
+
+
+			
