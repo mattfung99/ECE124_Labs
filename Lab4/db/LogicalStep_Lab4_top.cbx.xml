@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="LogicalStep_Lab4_top">
 	</PROJECT>
 </LOG_ROOT>
+=======
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="LogicalStep_Lab4_top">
+	</PROJECT>
+</LOG_ROOT>
+>>>>>>> cfef051bb3bf4a0568bc19b66a91f7a9f79c087f

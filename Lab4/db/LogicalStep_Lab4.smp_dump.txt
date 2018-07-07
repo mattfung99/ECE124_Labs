@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 State Machine - |LogicalStep_Lab4_top|MooreTwo:MooreState2|currentState
 Name currentState.s2 currentState.s1 currentState.s0 
@@ -11,3 +12,18 @@ currentState.s0 0 0 0 0
 currentState.s1 0 0 1 1 
 currentState.s2 0 1 0 1 
 currentState.s3 1 0 0 1 
+=======
+
+State Machine - |LogicalStep_Lab4_top|MooreTwo:MooreState2|currentState
+Name currentState.s2 currentState.s1 currentState.s0 
+currentState.s0 0 0 0 
+currentState.s1 0 1 1 
+currentState.s2 1 0 1 
+
+State Machine - |LogicalStep_Lab4_top|MooreOne:MooreState1|currentState
+Name currentState.s3 currentState.s2 currentState.s1 currentState.s0 
+currentState.s0 0 0 0 0 
+currentState.s1 0 0 1 1 
+currentState.s2 0 1 0 1 
+currentState.s3 1 0 0 1 
+>>>>>>> cfef051bb3bf4a0568bc19b66a91f7a9f79c087f
